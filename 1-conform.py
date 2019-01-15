@@ -1,10 +1,13 @@
 #Problem description: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s095-programming-for-the-puzzled-january-iap-2018/puzzle-1-you-will-all-conform/MIT6_S095IAP18_Puzzle_1.pdf
-#Input is a vector of F's and B's, in terms of forwards and backwards caps
-#Output is a set of commands (printed out) to get either all F's or all B's
+#Input is a vector of F's, B's and H's, in terms of forwards, backwards and no caps
+#Output is a set of commands (printed out) to get either all F's or all B's without
+#instructing people with no caps on
 #Fewest commands are the goal
 #Problem exercise 1-3 implemented:
 
 def keepThis(caps):
+    """Returns the orientation of caps to keep in line
+    params: caps {List consisting H's, F's and B's for current state of line}"""
     temp = []
     if(caps[0]!='H'):
         temp.append(caps[0])
@@ -17,9 +20,13 @@ def keepThis(caps):
         return('B')
 
 def youWillConform(caps):
+    """Prints the fewest commands to be spoken
+    params: caps {List consisting H's, F's and B's for current state of line}"""
     start = 0
     intervals = []
     if(len(caps)!=0):
+        #Get the orientation to keep in line and concatenate keep at the end of
+        #input array to avoid end case
         keep = keepThis(caps)
         caps = caps + [keep]
         
