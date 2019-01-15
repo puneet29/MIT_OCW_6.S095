@@ -24,14 +24,14 @@ def bestTimeToParty(schedule, ystart, yend):
     freq = {}
     impRange = preprocessing(schedule)
 
-    for i in range(len(impRange)):
-        freq[impRange[i]] = initial
+    for time in impRange:
+        freq[time] = initial
         for r0, r1 in schedule:
-            if(r0==impRange[i]):
-                freq[impRange[i]] +=1
-            if(r1==impRange[i]):
-                freq[impRange[i]] -=1
-            initial = freq[impRange[i]]
+            if(r0==time):
+                freq[time] +=1
+            if(r1==time):
+                freq[time] -=1
+            initial = freq[time]
     res = {}
     for i in freq:
         if(i>=ystart and i<yend):
