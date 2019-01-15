@@ -1,4 +1,4 @@
-# MIT_OCW_6.S095
+# MIT OCW 6.S095
 My solved problems for MIT Open Courseware: Programming for the puzzled
 
 ## Contents:
