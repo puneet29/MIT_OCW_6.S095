@@ -12,11 +12,11 @@ def preprocessing(Time):
     impRange.sort()
     return impRange
 
-def bestTimeToParty(schedule, ystart, yend):
+def bestTimeToParty(schedule, ystart=False, yend=False):
     """Prints the maximum number of celebrities present in given schedule of celebrities(schedule)
     params: schedule {2D array containing entering and leaving time of each celebrity}
-    ystart {Starting time of range to check for celebrities availability}
-    yend {Ending time of range to check for celebrities availability}"""
+    ystart=False(default) type:int {Starting time of range to check for celebrities availability}
+    yend=False(default) type:int {Ending time of range to check for celebrities availability}"""
 
     #Initializing the number of celebrities present previously and frequency
     #of celebrities at each important time interval
@@ -32,11 +32,14 @@ def bestTimeToParty(schedule, ystart, yend):
             if(r1==time):
                 freq[time] -=1
             initial = freq[time]
-    res = {}
-    for i in freq:
-        if(i>=ystart and i<yend):
-            res[i] = freq[i]
-    res = max(res, key=res.get)
+    if(ystart or yend):
+        res = {}
+        for i in freq:
+            if(i>=ystart and i<yend):
+                res[i] = freq[i]
+        res = max(res, key=res.get)
+    else:
+        res = max(freq, key=freq.get)
     print(f"Best time to attend party is at {res} o'clock: {freq[res]} celebrities will be attending!")
 
 if __name__ == "__main__":
