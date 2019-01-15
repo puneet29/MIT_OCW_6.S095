@@ -1,4 +1,3 @@
-#Problem description: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s095-programming-for-the-puzzled-january-iap-2018/puzzle-2-the-best-time-to-party/MIT6_S095IAP18_Puzzle_2.pdf
 #Given a list of intervals when celebrities will be at the party
 #Output is the time that you want to go the party when the maximum number of
 #celebrities are still there.

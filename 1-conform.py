@@ -1,4 +1,3 @@
-#Problem description: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s095-programming-for-the-puzzled-january-iap-2018/puzzle-1-you-will-all-conform/MIT6_S095IAP18_Puzzle_1.pdf
 #Input is a vector of F's, B's and H's, in terms of forwards, backwards and no caps
 #Output is a set of commands (printed out) to get either all F's or all B's without
 #instructing people with no caps on
