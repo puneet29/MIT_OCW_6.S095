@@ -6,15 +6,17 @@
 def preprocessing(Time):
     """Returns important range of time in which the celebrities enter the room
     params: Time {2D array containing entering and leaving time of each celebrity}"""
+
     impRange= Time.copy()
     impRange = list(set([a[0] for a in impRange]))
     impRange.sort()
-    print(impRange)
     return impRange
 
-def celemax(schedule):
+def bestTimeToParty(schedule, ystart, yend):
     """Prints the maximum number of celebrities present in given schedule of celebrities(schedule)
-    params: schedule {2D array containing entering and leaving time of each celebrity}"""
+    params: schedule {2D array containing entering and leaving time of each celebrity}
+    ystart {Starting time of range to check for celebrities availability}
+    yend {Ending time of range to check for celebrities availability}"""
 
     #Initializing the number of celebrities present previously and frequency
     #of celebrities at each important time interval
@@ -30,7 +32,11 @@ def celemax(schedule):
             if(r1==impRange[i]):
                 freq[impRange[i]] -=1
             initial = freq[impRange[i]]
-    res = max(freq, key=freq.get)
+    res = {}
+    for i in freq:
+        if(i>=ystart and i<yend):
+            res[i] = freq[i]
+    res = max(res, key=res.get)
     print(f"Best time to attend party is at {res} o'clock: {freq[res]} celebrities will be attending!")
 
 if __name__ == "__main__":
@@ -38,4 +44,4 @@ if __name__ == "__main__":
             (9, 10), (10, 11), (10, 12), (11, 12)]
     sched2 = [(6.0, 8.0), (6.5, 12.0), (6.5, 7.0), (7.0, 8.0), (7.5, 10.0), (8.0, 9.0), 
               (8.0, 10.0), (9.0, 12.0), (9.5, 10.0), (10.0, 11.0), (10.0, 12.0), (11.0, 12.0)]
-    celemax(time)
+    bestTimeToParty(sched2, 10.0, 12.0)
